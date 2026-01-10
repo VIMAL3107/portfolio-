@@ -1,6 +1,9 @@
 import { Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { TiltCard } from '@/components/animations/TiltCard';
+import { MagneticWrapper } from '@/components/animations/MagneticWrapper';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const projects = [
@@ -64,15 +67,13 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const isEven = index % 2 === 0;
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={cn(
-        'grid lg:grid-cols-2 gap-8 items-center p-6 lg:p-8 rounded-2xl bg-card border border-border hover-glow transition-all duration-700',
-        isVisible
-          ? 'opacity-100 translate-x-0'
-          : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20'
-      )}
+      initial={{ opacity: 0, x: isEven ? -100 : 100 }}
+      animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: isEven ? -100 : 100 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
     >
+      <TiltCard className="grid lg:grid-cols-2 gap-8 items-center p-6 lg:p-8 rounded-2xl bg-card border border-border hover-glow transition-all" max={5}>
       {/* Project Info */}
       <div className={cn('space-y-4', !isEven && 'lg:order-2')}>
         <div className="flex items-center gap-3 flex-wrap">
@@ -110,12 +111,14 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </div>
 
         <div className="flex gap-3 pt-2">
-          <Button asChild variant="default" size="sm" className="bg-gradient-primary">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="w-4 h-4 mr-2" />
-              View Code
-            </a>
-          </Button>
+          <MagneticWrapper strength={8}>
+            <Button asChild variant="default" size="sm" className="bg-gradient-primary hover:scale-105 transition-all">
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-2" />
+                View Code
+              </a>
+            </Button>
+          </MagneticWrapper>
         </div>
       </div>
 
@@ -126,19 +129,23 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         </h4>
         <div className="grid gap-3">
           {project.highlights.map((highlight, i) => (
-            <div
+            <motion.div
               key={i}
-              className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/50"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ delay: i * 0.1 + 0.3 }}
+              className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/50 hover:border-primary/50 hover:bg-muted transition-all"
             >
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-mono text-sm">
                 {String(i + 1).padStart(2, '0')}
               </div>
               <span className="text-sm text-foreground">{highlight}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+      </TiltCard>
+    </motion.div>
   );
 };
 
