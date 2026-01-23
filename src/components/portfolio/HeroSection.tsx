@@ -1,8 +1,9 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
 import profilePhoto from '@/assets/profile-photo-nobg.png';
-import aiBackground from '@/assets/ai-background-premium.png';
+
 
 export const HeroSection = () => {
   const { ref: imageRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -17,15 +18,7 @@ export const HeroSection = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden pt-0 md:pt-0"
     >
-      {/* AI Background Image */}
-      <div className="absolute inset-0 -z-10">
-        <img
-          src={aiBackground}
-          alt=""
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
-      </div>
+
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -61,10 +54,13 @@ export const HeroSection = () => {
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => handleScroll('#contact')}
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                asChild
               >
-                Contact Me
+                <a href="/AI ENGINEER VIMAL RAJ R.pdf" download="Vimal_Raj_R_AI_Engineer_Resume.pdf">
+                  <ArrowDown className="w-4 h-4 mr-2" />
+                  Download CV
+                </a>
               </Button>
             </div>
 
@@ -106,7 +102,7 @@ export const HeroSection = () => {
               <img
                 src={profilePhoto}
                 alt="R.Vimal Raj - AI Engineer"
-                className="w-full h-full object-contain object-bottom drop-shadow-[0_0_35px_rgba(45,212,191,0.6)] hover:drop-shadow-[0_0_50px_rgba(6,182,212,0.8)] transition-all duration-500"
+                className="w-full h-full object-contain object-bottom transition-all duration-500"
               />
             </div>
           </div>

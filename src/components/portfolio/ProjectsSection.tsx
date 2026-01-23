@@ -1,141 +1,119 @@
-import { Github } from 'lucide-react';
+import { useState } from 'react';
+import { Github, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 
-const projects = [
-  {
-    title: 'Hotel Harriet Guest Assistant',
-    subtitle: 'Server-to-Server WhatsApp Integration',
-    description:
-      'A headless middleware solution bridging WhatsApp Business API with hotel management systems. Allows guests to access hotel services directly through WhatsApp without downloading additional software.',
-    techStack: ['Python', 'FastAPI', 'WhatsApp API', 'Render', 'Webhooks'],
-    highlights: [
-      'Zero-UI Guest Experience via WhatsApp',
-      'System User Integration with secure tokens',
-      'Rich Media Messaging with PDFs & videos',
-      'Intelligent Webhook Handling',
-    ],
-    role: 'Backend Engineer & API Architect',
-    status: 'Live',
-    github: 'https://github.com/VIMAL3107',
-  },
-  {
-    title: 'AI Zero',
-    subtitle: 'Intelligent Enterprise Operating System',
-    description:
-      'A next-generation all-in-one business management platform unifying CRM, Marketing, Sales, and Service. Leverages embedded AI for natural language data querying and workflow automation.',
-    techStack: ['React.js', 'FastAPI', 'SQLAlchemy', 'NLP', 'Tailwind CSS'],
-    highlights: [
-      'Unified Dashboard for all business metrics',
-      'AI-Powered CRM with natural language queries',
-      'Comprehensive Suite: CRM, CMS, Sales, Service',
-      'Modern UI with "calm" aesthetic design',
-    ],
-    role: 'Full-Stack Architect',
-    status: 'In Development',
-    github: 'https://github.com/VIMAL3107',
-  },
-  {
-    title: 'Event Horizon AI',
-    subtitle: 'Multimodal AI Assistant Interface',
-    description:
-      'A next-generation multimodal AI assistant using Google Gemini models to process text, images, audio, and documents in real-time with persistent memory across sessions.',
-    techStack: ['React.js', 'FastAPI', 'SQLite', 'Google Gemini', 'CSS3'],
-    highlights: [
-      'Multimodal Intelligence: text, voice, visuals',
-      'Streaming Responses in real-time',
-      'Session Management & Persistent Memory',
-      'Glassmorphism UI Design',
-    ],
-    role: 'Full-Stack Developer',
-    status: 'In Development',
-    github: 'https://github.com/VIMAL3107',
-  },
-];
+import { Link } from 'react-router-dom';
+import { projects } from '@/data/projects';
 
-interface ProjectCardProps {
-  project: (typeof projects)[0];
-  index: number;
-}
+const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [rotation, setRotation] = useState({ x: 0, y: 0 });
 
-const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
-  const isEven = index % 2 === 0;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -10; // Max rotation 10deg
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    setRotation({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotation({ x: 0, y: 0 });
+  };
 
   return (
     <div
       ref={ref}
       className={cn(
-        'grid lg:grid-cols-2 gap-8 items-center p-6 lg:p-8 rounded-2xl bg-card border border-border hover-glow transition-all duration-700',
-        isVisible
-          ? 'opacity-100 translate-x-0'
-          : isEven ? 'opacity-0 -translate-x-20' : 'opacity-0 translate-x-20'
+        'h-full transition-all duration-500',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
       )}
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
-      {/* Project Info */}
-      <div className={cn('space-y-4', !isEven && 'lg:order-2')}>
-        <div className="flex items-center gap-3 flex-wrap">
-          <span className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
-            {project.role}
-          </span>
-          <span
-            className={cn(
-              'px-3 py-1 text-xs font-medium rounded-full',
-              project.status === 'Live'
-                ? 'bg-green-500/10 text-green-600'
-                : 'bg-yellow-500/10 text-yellow-600'
-            )}
-          >
-            {project.status}
-          </span>
-        </div>
-
-        <div>
-          <h3 className="text-2xl font-bold mb-1">{project.title}</h3>
-          <p className="text-primary font-medium">{project.subtitle}</p>
-        </div>
-
-        <p className="text-muted-foreground leading-relaxed">{project.description}</p>
-
-        <div className="flex flex-wrap gap-2">
-          {project.techStack.map((tech) => (
+      <div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="group flex flex-col overflow-hidden rounded-2xl bg-card border border-border/50 transition-all duration-200 h-full"
+        style={{
+          transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+        }}
+      >
+        {/* Project Image */}
+        <div className="relative w-full aspect-video overflow-hidden border-b border-border/20">
+          <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none mix-blend-overlay" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+          />
+          <div className="absolute top-4 right-4 z-20">
             <span
-              key={tech}
-              className="px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded"
+              className={cn(
+                'px-3 py-1 text-xs font-medium rounded-full backdrop-blur-md shadow-sm border border-white/10',
+                project.status === 'Live'
+                  ? 'bg-green-500/80 text-white'
+                  : 'bg-yellow-500/80 text-white'
+              )}
             >
-              {tech}
+              {project.status}
             </span>
-          ))}
+          </div>
         </div>
 
-        <div className="flex gap-3 pt-2">
-          <Button asChild variant="default" size="sm" className="bg-gradient-primary">
-            <a href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="w-4 h-4 mr-2" />
-              View Code
-            </a>
-          </Button>
-        </div>
-      </div>
+        {/* Project Info */}
+        <div className="flex flex-col flex-grow p-6 space-y-4">
+          <div>
+            <span className="text-xs font-medium text-primary mb-2 block tracking-wider uppercase opacity-80">
+              {project.role}
+            </span>
+            <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors duration-300">
+              {project.title}
+            </h3>
+            <p className="text-sm font-medium text-muted-foreground">{project.subtitle}</p>
+          </div>
 
-      {/* Project Highlights */}
-      <div className={cn('space-y-3', !isEven && 'lg:order-1')}>
-        <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
-          Key Features
-        </h4>
-        <div className="grid gap-3">
-          {project.highlights.map((highlight, i) => (
-            <div
-              key={i}
-              className="flex items-center gap-3 p-3 rounded-lg bg-muted/50 border border-border/50"
-            >
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-mono text-sm">
-                {String(i + 1).padStart(2, '0')}
-              </div>
-              <span className="text-sm text-foreground">{highlight}</span>
-            </div>
-          ))}
+          <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+            {project.description}
+          </p>
+
+          {/* Tech Stack - limited to first 3-4 to keep card clean */}
+          <div className="flex flex-wrap gap-2">
+            {project.techStack.slice(0, 4).map((tech) => (
+              <span
+                key={tech}
+                className="px-2 py-1 text-[10px] font-mono bg-muted/50 text-muted-foreground rounded border border-border/50"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.techStack.length > 4 && (
+              <span className="px-2 py-1 text-[10px] font-mono bg-muted/50 text-muted-foreground rounded border border-border/50">
+                +{project.techStack.length - 4}
+              </span>
+            )}
+          </div>
+
+          <div className="flex gap-3 pt-2">
+            <Button asChild variant="default" size="sm" className="flex-1 bg-gradient-primary group-hover:opacity-90 hover:opacity-100 transition-all">
+              <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-2" />
+                View Code
+              </a>
+            </Button>
+            <Button asChild variant="outline" size="sm" className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground group-hover:opacity-90 hover:opacity-100 transition-all">
+              <Link to={`/project/${project.id}`}>
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Demo Video
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -161,9 +139,15 @@ export const ProjectsSection = () => {
           )}>
             Projects
           </h2>
+          <p className={cn(
+            "mt-4 text-muted-foreground max-w-2xl mx-auto transition-all duration-500 delay-200",
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+          )}>
+            Showcasing a collection of my technical projects, ranging from AI integration to backend architecture.
+          </p>
         </div>
 
-        <div className="grid gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))}

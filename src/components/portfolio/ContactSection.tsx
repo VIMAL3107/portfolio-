@@ -61,7 +61,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center mb-16">
           <p className={cn(
@@ -203,7 +203,7 @@ export const ContactSection = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="your@email.com"
+                  placeholder="iamvimal3107@gmail.com"
                   required
                   className="bg-background"
                 />

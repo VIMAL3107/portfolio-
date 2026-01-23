@@ -57,9 +57,9 @@ export const SkillsSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="py-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="text-center mb-16">
+        <div ref={ref} className="text-center mb-10">
           <p className={cn(
             'text-primary font-mono text-sm mb-2 transition-all duration-500',
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'

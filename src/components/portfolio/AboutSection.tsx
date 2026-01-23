@@ -22,7 +22,7 @@ export const AboutSection = () => {
   const { ref: aspirationRef, isVisible: aspirationVisible } = useScrollAnimation({ threshold: 0.3 });
 
   return (
-    <section id="about" className="py-24 bg-muted/30">
+    <section id="about" className="py-16 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-8">
           <div ref={headerRef} className="text-center">
@@ -52,7 +52,7 @@ export const AboutSection = () => {
             building predictive models, AI-driven solutions, and intelligent systems.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mt-8">
+          <div className="grid md:grid-cols-2 gap-6 mt-8">
             <div
               ref={focusRef}
               className={cn(

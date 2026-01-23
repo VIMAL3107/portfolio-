@@ -1,0 +1,132 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2021 Jitin Nair
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+\documentclass[a4paper,11pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.92]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+\usepackage{supertabular}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{6pt}
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\usepackage{fontawesome5}
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[2pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[2pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Vimal Raj} \\[4pt]
+\href{https://github.com/VIMAL3107}{\raisebox{-0.05\height}\faGithub\ VIMAL3107} \ $|$ \ 
+\href{https://www.linkedin.com/in/vimal-raj3107/}{\raisebox{-0.05\height}\faLinkedin\ LinkedIn} \ $|$ \ 
+\href{mailto:iamvimal3107@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ iamvimal3107@gmail.com} \ $|$ \ 
+\href{tel:+917540062368}{\raisebox{-0.05\height}\faMobile \ +91 7540062368} \\
+Chennai, Tamil Nadu, India \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SUMMARY
+%----------------------------------------------------------------------------------------
+\section{Summary}
+AI/ML Engineer with 2+ years of experience in building, training, and deploying machine learning models. Expertise in NLP, deep learning, and transformer-based architectures using Python, TensorFlow, PyTorch, and scikit-learn. Hands-on experience with LLM fine-tuning, prompt engineering, and automation scripts for metric generation and data processing. Skilled in experiment tracking with TensorBoard and W\&B.
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Technical Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{ML Frameworks} & Python, TensorFlow, PyTorch, scikit-learn, XGBoost, LightGBM, NumPy, Pandas \\
+\textbf{NLP \& Deep Learning} & Transformers, BERT, LLM Fine-tuning, Prompt Engineering, NLTK, spaCy, Hugging Face \\
+\textbf{Tools \& Experimentation} & Jupyter Notebooks, TensorBoard, Weights \& Biases (W\&B), Git, GitHub, Jenkins \\
+\textbf{Model Optimization} & ONNX, TensorRT, TFLite, Edge AI Optimization, Feature Engineering \\
+\textbf{Backend \& Deployment} & FastAPI, REST APIs, SQL, PostgreSQL, Docker, Cloud Deployment \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Work Experience}
+
+\begin{joblong}{AI/ML Engineer -- Aastra Technologies}{Jul 2025 - Present}
+\item Build, train, and maintain ML systems based on machine learning and NLP
+\item Write machine learning algorithms based on transformers for text classification
+\item Conduct experiments, evaluate model performance using TensorBoard/W\&B, and suggest improvements
+\item Prepare automation scripts for metric generation, file conversions, and data preprocessing
+\item Collaborate with senior engineers to implement production-ready AI solutions
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%	PROJECTS
+%----------------------------------------------------------------------------------------
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{AI Zero -- Intelligent Enterprise Operating System} & \hfill \href{https://github.com/VIMAL3107/AI-Zero}{GitHub} \\[2pt]
+\multicolumn{2}{@{}X@{}}{NLP-powered business platform with transformer-based models for natural language querying and workflow automation. Built ML pipelines using scikit-learn. \textbf{Tech:} Python, PyTorch, Transformers, FastAPI, NLP} \\[6pt]
+
+\textbf{Event Horizon AI -- Multimodal AI Assistant} & \hfill \href{https://github.com/VIMAL3107/Event-Horizon}{GitHub} \\[2pt]
+\multicolumn{2}{@{}X@{}}{Multimodal AI assistant processing text, images, and audio with LLM integration and prompt engineering. \textbf{Tech:} Python, TensorFlow, LLM Prompting, FastAPI, SQLite} \\[6pt]
+
+\textbf{Hotel WhatsApp ChatBot} & \hfill \href{https://github.com/VIMAL3107/HSM_Chatbot}{GitHub} \\[2pt]
+\multicolumn{2}{@{}X@{}}{NLP-powered chatbot with text processing pipelines for intent classification and entity extraction. \textbf{Tech:} Python, NLP, FastAPI, Webhooks} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}}	
+2025 - 2027 & \textbf{MCA} at SRM IST Chennai \hfill (Expected Dec 2027) \\
+2023 - 2024 & \textbf{Data Science \& AI Certification} at Besant Technologies -- Deep Learning, NLP, Statistical Learning \hfill (Grade: A) \\
+\end{tabularx}
+
+\end{document}
