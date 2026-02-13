@@ -122,6 +122,21 @@ export default {
         blink: {
           "50%": { borderColor: "transparent" },
         },
+        "wave-slow": {
+          "0%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-3%) scale(1.02)" },
+          "100%": { transform: "translateY(0) scale(1)" },
+        },
+        "wave-medium": {
+          "0%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(3%) scale(1.03)" },
+          "100%": { transform: "translateY(0) scale(1)" },
+        },
+        "wave-fast": {
+          "0%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-5%) scale(1.05)" },
+          "100%": { transform: "translateY(0) scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -135,6 +150,9 @@ export default {
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
         typing: "typing 3.5s steps(40, end)",
         blink: "blink 0.75s step-end infinite",
+        "wave-slow": "wave-slow 20s ease-in-out infinite",
+        "wave-medium": "wave-medium 15s ease-in-out infinite",
+        "wave-fast": "wave-fast 10s ease-in-out infinite",
       },
     },
   },
