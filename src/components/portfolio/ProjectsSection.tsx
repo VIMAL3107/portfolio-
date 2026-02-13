@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
@@ -73,7 +73,7 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             <span className="text-xs font-medium text-primary mb-2 block tracking-wider uppercase opacity-80">
               {project.role}
             </span>
-            <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors duration-300">
+            <h3 className="text-xl font-bold mb-1 text-white group-hover:text-primary transition-colors duration-300">
               {project.title}
             </h3>
             <p className="text-sm font-medium text-muted-foreground">{project.subtitle}</p>
@@ -100,19 +100,30 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
             )}
           </div>
 
-          <div className="flex gap-3 pt-2">
-            <Button asChild variant="default" size="sm" className="flex-1 bg-gradient-primary group-hover:opacity-90 hover:opacity-100 transition-all">
-              <a href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="w-4 h-4 mr-2" />
-                View Code
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="sm" className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground group-hover:opacity-90 hover:opacity-100 transition-all">
-              <Link to={`/project/${project.id}`}>
-                <ExternalLink className="w-4 h-4 mr-2" />
-                Demo Video
-              </Link>
-            </Button>
+          <div className="flex flex-col gap-2 pt-2 mt-auto">
+            <div className="flex gap-2">
+              <Button asChild variant="default" size="sm" className="flex-1 bg-gradient-primary group-hover:opacity-90 hover:opacity-100 transition-all text-xs h-8">
+                <a href={project.github} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-3.5 h-3.5 mr-1.5" />
+                  Code
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="sm" className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground group-hover:opacity-90 hover:opacity-100 transition-all text-xs h-8">
+                <Link to={`/project/${project.id}`}>
+                  <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
+                  Demo
+                </Link>
+              </Button>
+            </div>
+
+            {project.liveUrl && (
+              <Button asChild size="sm" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white transition-all text-xs h-8">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                  <Globe className="w-3.5 h-3.5 mr-1.5" />
+                  Live Website
+                </a>
+              </Button>
+            )}
           </div>
         </div>
       </div>

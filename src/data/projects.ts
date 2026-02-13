@@ -11,6 +11,7 @@ export interface Project {
     github: string;
     image: string;
     videoUrl?: string;
+    liveUrl?: string;
 }
 
 export const projects: Project[] = [
@@ -43,6 +44,7 @@ export const projects: Project[] = [
         github: 'https://github.com/VIMAL3107',
         image: '/projects/hotel-harriet.png',
         videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder video
+        liveUrl: 'https://example.com', // Placeholder
     },
     {
         id: 'ai-zero',
@@ -69,31 +71,34 @@ export const projects: Project[] = [
         github: 'https://github.com/VIMAL3107',
         image: '/projects/ai-zero.png',
         videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder video
+        liveUrl: 'https://example.com', // Placeholder
     },
     {
         id: 'event-horizon',
         title: 'Event Horizon AI',
-        subtitle: 'Multimodal AI Assistant Interface',
+        subtitle: 'Next-Gen Multimodal AI Assistant with RAG',
         description:
-            'A next-generation multimodal AI assistant using Google Gemini models to process text, images, audio, and documents in real-time with persistent memory across sessions.',
+            'A fully integrated AI workspace designed for speed, context, and intelligent document retrieval. Bridges Google Gemini with a custom local knowledge base using RAG.',
         longDescription: `
-      Event Horizon AI pushes the boundaries of what's possible with browser-based AI assistants. Built on top of Google's Gemini models, it supports true multimodal interaction.
+      Event Horizon isn't just another wrapper; it's a fully integrated AI workspace designed for speed, context, and intelligent document retrieval.
 
-      Users can upload documents for summary, speak to the assistant for voice-to-text processing, and even share images for analysis—all within a single, persistent session. The application maintains context across these different modalities, allowing for a natural and fluid conversation.
+      It bridges Google's Gemini models with a custom local knowledge base, allowing you to "teach" the AI by uploading your own documents (PDFs, text). The system uses Retrieval-Augmented Generation (RAG) powered by LangChain and ChromaDB to provide precise, context-aware answers.
 
-      The UI features a modern glassmorphism design, providing a visually stunning backdrop for the advanced intelligence it houses.
+      Key Features include multimodal intelligence for analyzing images and docs, token-by-token streaming responses for a "live" feel, and persistent memory using SQLite to manage multiple sessions. All wrapped in a sleek, custom-built Glassmorphism UI.
     `,
-        techStack: ['React.js', 'FastAPI', 'SQLite', 'Google Gemini', 'CSS3'],
+        techStack: ['Python', 'FastAPI', 'SQLite', 'Google Gemini', 'LangChain', 'ChromaDB'],
         highlights: [
-            'Multimodal Intelligence: text, voice, visuals',
-            'Streaming Responses in real-time',
-            'Session Management & Persistent Memory',
-            'Glassmorphism UI Design',
+            'RAG Knowledge Base with ChromaDB',
+            'Multimodal Intelligence (Images & Docs)',
+            'Real-time Streaming Responses',
+            'Persistent Memory (SQLite)',
+            'Custom Glassmorphism UI',
         ],
         role: 'Full-Stack Developer',
         status: 'In Development',
         github: 'https://github.com/VIMAL3107',
         image: '/projects/event-horizon.png',
         videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder video
+        liveUrl: 'https://example.com', // Placeholder
     },
 ];

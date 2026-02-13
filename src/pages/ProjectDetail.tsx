@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, Calendar, Code2, Layers } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Calendar, Code2, Layers, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { projects } from '@/data/projects';
 import { cn } from '@/lib/utils';
@@ -56,7 +56,7 @@ const ProjectDetail = () => {
                             {project.status}
                         </span>
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gradient">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
                         {project.title}
                     </h1>
                     <p className="text-xl text-muted-foreground w-full max-w-2xl">
@@ -134,6 +134,15 @@ const ProjectDetail = () => {
                                             View Source Code
                                         </a>
                                     </Button>
+
+                                    {project.liveUrl && (
+                                        <Button asChild size="lg" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold">
+                                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                                <Globe className="w-4 h-4 mr-2" />
+                                                Live Website
+                                            </a>
+                                        </Button>
+                                    )}
                                 </div>
                             </div>
                         </div>
