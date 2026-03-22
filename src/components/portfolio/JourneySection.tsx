@@ -138,7 +138,7 @@ export const JourneySection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section id="journey" className="py-16"> {/* Reduced py */}
+    <section id="journey" className="py-24 bg-teal-light/20 border-t border-teal/10"> {/* Updated BG and border */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-10"> {/* Reduced mb */}
           <p className={cn(

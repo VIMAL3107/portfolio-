@@ -45,14 +45,27 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
         }}
       >
-        {/* Project Image */}
+        {/* Project Image/Video */}
         <div className="relative w-full aspect-video overflow-hidden border-b border-border/20">
           <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none mix-blend-overlay" />
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-          />
+
+          {project.videoUrl?.endsWith('.mp4') ? (
+            <video
+              src={project.videoUrl}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+              poster={project.image}
+            />
+          ) : (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+            />
+          )}
           <div className="absolute top-4 right-4 z-20">
             <span
               className={cn(

@@ -80,7 +80,7 @@ export const CertificationsSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section id="certifications" className="py-24 bg-muted/30">
+    <section id="certifications" className="py-24 bg-teal-light/20 border-t border-teal/10"> {/* Updated BG and border */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-16">
           <p className={cn(

@@ -95,10 +95,10 @@ export const projects: Project[] = [
             'Custom Glassmorphism UI',
         ],
         role: 'Full-Stack Developer',
-        status: 'In Development',
+        status: 'Live',
         github: 'https://github.com/VIMAL3107',
         image: '/projects/event-horizon.png',
-        videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder video
+        videoUrl: '/projects/event-horizon.mp4',
         liveUrl: 'https://example.com', // Placeholder
     },
 ];

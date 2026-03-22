@@ -70,13 +70,25 @@ const ProjectDetail = () => {
                         {/* Video Player */}
                         <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-card shadow-2xl animate-fade-up stagger-1 aspect-video group">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            <iframe
-                                src={project.videoUrl}
-                                title={`${project.title} Demo Video`}
-                                className="w-full h-full"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                            />
+                            {project.videoUrl?.endsWith('.mp4') ? (
+                                <video
+                                    src={project.videoUrl}
+                                    controls
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className="w-full h-full"
+                                    poster={project.image}
+                                />
+                            ) : (
+                                <iframe
+                                    src={project.videoUrl}
+                                    title={`${project.title} Demo Video`}
+                                    className="w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                />
+                            )}
                         </div>
 
                         {/* Deep Explanation */}
