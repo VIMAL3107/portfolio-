@@ -22,7 +22,7 @@ export const HeroSection = () => {
       <svg
         viewBox="0 0 1000 1000"
         preserveAspectRatio="none"
-        className="absolute right-0 top-0 h-full w-full md:w-[75%] lg:w-[65%] pointer-events-none opacity-90"
+        className="absolute right-0 top-0 h-full w-full md:w-[75%] lg:w-[65%] pointer-events-none opacity-90 transition-all duration-1000"
       >
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -96,16 +96,16 @@ export const HeroSection = () => {
               <p className="text-primary font-mono text-sm mb-4">Hello, I'm</p>
             </div>
 
-            <h1 className="animate-fade-up stagger-1 text-5xl sm:text-6xl md:text-7xl font-bold mb-6">
+            <h1 className="animate-fade-up stagger-1 text-4xl sm:text-6xl md:text-7xl font-bold mb-6">
               <span className="text-foreground">R.VIMAL</span>{' '}
               <span className="text-gradient">RAJ</span>
             </h1>
 
             <div className="animate-fade-up stagger-2">
-              <p className="text-xl sm:text-2xl text-muted-foreground mb-2">
+              <p className="text-lg sm:text-2xl text-muted-foreground mb-2">
                 AI Engineer & Machine Learning Specialist
               </p>
-              <p className="text-muted-foreground max-w-xl mb-8">
+              <p className="text-muted-foreground max-w-xl mb-8 mx-auto lg:mx-0">
                 Transforming complex data into intelligent solutions. Passionate about building
                 AI-driven applications that drive innovation and measurable impact.
               </p>
@@ -159,18 +159,18 @@ export const HeroSection = () => {
           </div>
 
           {/* Profile Image - Large with scroll-triggered side pop animation */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end -mt-18 lg:-mt-24">
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end -mt-8 md:-mt-18 lg:-mt-24">
             <div
               ref={imageRef}
-              className={`-mt-14 relative w-[500px] h-[700px] sm:w-[500px] sm:h-[500px] md:w-[800px] md:h-[600px] lg:w-[800px] lg:h-[805px] transition-all duration-700 ease-out ${isVisible
+              className={`relative w-full max-w-[280px] sm:max-w-[350px] md:max-w-[450px] lg:max-w-[800px] aspect-[4/5] lg:aspect-auto lg:h-[805px] transition-all duration-700 ease-out ${isVisible
                 ? 'opacity-100 translate-x-0'
-                : 'opacity-0 translate-x-20'
+                : 'opacity-0 translate-x-10 md:translate-x-20'
                 }`}
             >
               <img
                 src={profilePhoto}
                 alt="R.Vimal Raj - AI Engineer"
-                className="w-full h-full object-contain object-bottom transition-all duration-500"
+                className="w-full h-full object-contain object-bottom transition-all duration-500 scale-110 sm:scale-100"
               />
             </div>
           </div>

@@ -61,7 +61,7 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-teal-light/20 border-t border-teal/10"> {/* Updated BG and border */}
+    <section id="contact" className="py-24 bg-teal-light/20 border-t border-teal/10 overflow-hidden"> {/* Updated BG and border */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center mb-16">
           <p className={cn(

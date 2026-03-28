@@ -99,6 +99,6 @@ export const projects: Project[] = [
         github: 'https://github.com/VIMAL3107',
         image: '/projects/event-horizon.png',
         videoUrl: '/projects/event-horizon.mp4',
-        liveUrl: 'https://example.com', // Placeholder
+        liveUrl: 'https://event-horizon-hh81.onrender.com/',
     },
 ];

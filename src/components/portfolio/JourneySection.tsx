@@ -74,7 +74,7 @@ const JourneyItem = ({ item, index }: JourneyItemProps) => {
     >
       {/* Timeline dot */}
       <div className={cn(
-        'absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background -translate-x-1/2 z-10 transition-all duration-500',
+        'absolute left-6 md:left-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background -translate-x-1/2 z-10 transition-all duration-500',
         isVisible ? 'scale-100' : 'scale-0'
       )}
         style={{ transitionDelay: `${index * 150 + 200}ms` }}
@@ -83,7 +83,7 @@ const JourneyItem = ({ item, index }: JourneyItemProps) => {
       {/* Content */}
       <div
         className={cn(
-          'ml-16 md:ml-0',
+          'ml-12 md:ml-0',
           isRightSide ? 'md:col-start-2 md:pl-12' : 'md:pr-12'
         )}
       >
@@ -138,7 +138,7 @@ export const JourneySection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section id="journey" className="py-24 bg-teal-light/20 border-t border-teal/10"> {/* Updated BG and border */}
+    <section id="journey" className="py-24 bg-teal-light/20 border-t border-teal/10 overflow-hidden"> {/* Updated BG and border */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="text-center mb-10"> {/* Reduced mb */}
           <p className={cn(
@@ -157,7 +157,7 @@ export const JourneySection = () => {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-0.5" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-border md:-translate-x-0.5" />
 
           <div className="space-y-8"> {/* Reduced space-y */}
             {journeyItems.map((item, index) => (
